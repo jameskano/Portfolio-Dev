@@ -1,0 +1,88 @@
+<a class="shiny-button">
+    <span class="linear-overlay"></span>
+    <slot />
+</a>
+
+<style>
+    @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --radial-gradient-background: 250, 250, 250;
+    --solid-color-background: 15, 15, 15;
+    --overlay-color: 255, 255, 255;
+}
+
+.shiny-button {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: radial-gradient(
+            circle at 50% 0%,
+            rgba(var(--radial-gradient-background), 0.05) 0%,
+            transparent 60%
+        )
+        rgba(var(--solid-color-background), 1);
+    color: #fafafa;
+    font-size: 16px;
+    font-weight: 300;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.button-text {
+    position: relative;
+    z-index: 1;
+    display: block;
+}
+
+.linear-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+        -75deg,
+        rgba(var(--overlay-color), 0.1) 20%,
+        rgba(var(--overlay-color), 0.5) 25%,
+        rgba(var(--overlay-color), 0.1) 100%
+    );
+    animation: slide 2s linear infinite;
+    border-radius: inherit;
+    pointer-events: none;
+    mask: linear-gradient(black, black) content-box, linear-gradient(black, black);
+    -webkit-mask: linear-gradient(black, black) content-box, linear-gradient(black, black);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const button = (document.querySelector(".shiny-button") as HTMLButtonElement);
+
+    button!.addEventListener("mousedown", () => {
+        button.style.transform = "scale(0.97)";
+    });
+
+    button.addEventListener("mouseup", () => {
+        button.style.transform = "scale(1)";
+    });
+
+    button.addEventListener("mouseleave", () => {
+        button.style.transform = "scale(1)";
+    });
+});
+</script>

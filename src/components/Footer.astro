@@ -1,28 +1,83 @@
 ---
 const currentYear = new Date().getFullYear()
+import LinkedInIcon from "@/components/icons/LinkedIn.astro"
+import MailIcon from "@/components/icons/Mail.astro"
+import GitHub from "./icons/GitHub.astro"
+import SocialPill from "@/components/SocialPill.astro"
+import SocialPillAlt from "./SocialPillAlt.astro"
 ---
 
 <footer
-  class="opacity-80 m-4 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-10 flex justify-center"
+  class="opacity-80 m-4 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-4 flex justify-center"
 >
   <div
-    class="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between py-4"
+    class="rounded-lg w-full max-w-screen-xl mx-auto flex flex-col sm:flex-row items-center sm:justify-between justify-center py-4"
   >
-    <span class="text-sm sm:text-center text-zinc-800/90 dark:text-zinc-200/90"
-      >© {currentYear}
-      <a href="https://midu.dev/" class="hover:underline">Jaime Canovas</a>. All rights reserved.
+  <ul
+    class="flex flex-wrap items-center text-sm font-medium dark:text-white/90 sm:mt-0"
+  >
+  <nav class="flex flex-row gap-2 ">
+    <SocialPill href="mailto:jaimecanovasdesign@gmail.com">
+      <MailIcon class="size-6" />
+    </SocialPill>
+    <SocialPill href="https://www.linkedin.com/in/jaime-canovas-incertis">
+      <LinkedInIcon class="size-6" />
+    </SocialPill>
+    <SocialPill href="https://www.github.com/jameskano">
+      <GitHub class="size-6" />
+    </SocialPill>
+  </nav>
+  </ul>
+
+    <span class="text-sm sm:text-center text-zinc-800/90 dark:text-zinc-200/90 mt-3">
+      Designed and built by Jaime Canovas. © {currentYear}
     </span>
-    <ul
-      class="flex flex-wrap items-center mt-3 text-sm font-medium dark:text-white/90 sm:mt-0"
-    >
-      <!-- <li>
-        <a href="/#sobre-mi" class="hover:underline me-4 md:me-6">About me</a>
-      </li> -->
-      <!-- <li>
-        <a id="contacto" href="mailto:miduga@gmail.com" class="hover:underline"
-          >Contacto</a
-        >
-      </li> -->
-    </ul>
   </div>
 </footer>
+
+<nav class="hidden flex-row gap-4 alt-links fixed bottom-1 left-1/2 transform -translate-x-1/2 rounded-full pl-4 pr-4 pt-2 pb-2">
+  <SocialPillAlt href="mailto:jaimecanovasdesign@gmail.com">
+    <MailIcon class="size-5" />
+  </SocialPillAlt>
+  <SocialPillAlt href="https://www.linkedin.com/in/jaime-canovas-incertis">
+    <LinkedInIcon class="size-5" />
+  </SocialPillAlt>
+  <SocialPillAlt href="https://www.github.com/jameskano">
+    <GitHub class="size-5" />
+  </SocialPillAlt>
+</nav>
+
+<script>
+  const checkScrollPosition = () => {
+    const scrollPosition = window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight;
+        const windowHeight = window.innerHeight;
+        const distanceFromBottom = documentHeight - (scrollPosition + windowHeight);
+
+        if (distanceFromBottom > 100) {
+            (document.querySelector('.alt-links') as HTMLElement).style.display = 'flex';
+        } else {
+            (document.querySelector('.alt-links') as HTMLElement).style.display = 'none';
+        }
+  }
+
+  window.addEventListener('scroll', checkScrollPosition);
+</script>
+
+<style>
+  .alt-links {
+    animation: nav-shadown 0.2s linear both;
+    /* animation-timeline: scroll(); */
+    animation-range: 0 100px;
+  }
+
+  @keyframes nav-shadown {
+    to {
+      @apply shadow-lg ring-1 backdrop-blur bg-teal-200/50 ring-teal-500/10;
+    }
+  }
+
+  @media (max-width: 768px) {
+
+  }
+</style>

@@ -1,47 +1,30 @@
 ---
 const personalImageAlt = "Jaime Canovas"
 import Badge from "@/components/Badge.astro"
-import LinkedInIcon from "@/components/icons/LinkedIn.astro"
-import MailIcon from "@/components/icons/Mail.astro"
-import SocialPill from "@/components/SocialPill.astro"
 ---
 
 <div class="max-w-xl">
-  <div class="flex gap-4 mb-4">
+  <div class="flex gap-4 mb-4 items-center">
     <img
       class="rounded-full shadow-lg size-16"
       src="/avatar.webp"
       alt={personalImageAlt}
     />
-    <a
-      href="https://www.linkedin.com/in/jaime-canovas-incertis"
-      target="_blank"
-      rel="noopener"
+    <div
       class="flex items-center transition md:justify-center md:hover:scale-105"
     >
       <Badge>Available to work</Badge>
-    </a>
+  </div>
   </div>
   <h1
-    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+    class="text-3xl font-bold tracking-tight sm:text-4xl text-slate-100"
   >
-    Hey, I'm Jimmy!
+    Hey, I'm Jaime Canovas!
   </h1>
   <p
-    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
+    class="mt-4 text-2xl [&>strong]:text-cyan-400 [&>strong]:font-semibold text-slate-300"
   >
-    +3 years of experience <strong
-      >full stack software engineer</strong
-    > from Zaragoza, Spain. Specialized in the development of unique web applications.
+    <strong>Frontend Engineer</strong>
   </p>
-  <nav class="flex flex-wrap gap-4 mt-8">
-    <SocialPill href="mailto:jaimecanovasdesign@gmail.com">
-      <MailIcon class="size-4" />
-      Contact me
-    </SocialPill>
-    <SocialPill href="https://www.linkedin.com/in/jaime-canovas-incertis">
-      <LinkedInIcon class="size-4" />
-      LinkedIn
-    </SocialPill>
-  </nav>
+  <p class="mt-2 text-xl text-slate-300">Specialized in the development of unique web applications.</p>
 </div>

@@ -1,24 +1,36 @@
 ---
  const personalImageAlt = ""
+ const tooling = ['React', 'TypeScript', 'JavaScript', 'CSS', 'SCSS', 'HTML', 'Git', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Jest', 'Cypress', 'Photoshop', 'SQL', 'Jquery', 'React Native']
 ---
 
-<article class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row">
+<article class="flex flex-col items-center justify-center gap-8 text-slate-300 md:flex-row">
   <div
-    class="[&>p]:mb-4 [&>p>strong]:text-yellow-500 dark:[&>p>strong]:text-yellow-100 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
+    class="[&>p>a>strong]:font-bold [&>p]:mb-4 [&>p>a>strong]:text-cyan-400 [&>p>a>strong]:font-normal [&>p>a>strong]:font-mono text-pretty order-2 md:order-1"
   >
     <p>
-      I'm Jaime. I started programming with JavaScript with the intention of combining logic and design in the same product. I am currently <strong
-        >working in a multinational company</strong
-      >.
+      I'm Jaime, from Spain. Back in the day I started in graphic design and then I switched to programming with JavaScript, aiming to combine my design skills with coding. I have developed software at a <a href="https://garvira.com/" target="_blank"><strong
+        >digital services cooperative</strong></a>, a <a href="https://cleverpy.com/" target="_blank"><strong>start-up</strong></a> and currently, I'm working in different projects at a <a href="https://www.capgemini.com/es-es/" target="_blank"><strong>large multinational company</strong></a>
+        .
+    </p>
+
+    <p class="[&>strong]:text-yellow-500 dark:[&>strong]:text-cyan-400 [&>strong]:font-normal [&>strong]:font-mono [&>strong]:font-bold">
+      I love creating <strong>appealing</strong>, <strong>engaging</strong> and <strong>pixel perfect</strong> applications that are also well-built under the hood.
     </p>
 
     <p>
-      One of my successes is <strong
-        >acting as the main front end in a large water management project,</strong
-      > validating the work and accompanying other developers.
+      In my free time, I enjoy learning new things, developing my own projects, and exploring new worlds both in and out of my computer.
     </p>
+
+    <p>
+      Some technologies I frecuently use:
+    </p>
+    <div class="grid grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))]">
+      {tooling.map((tool) => (
+        <div>
+          <span class="text-cyan-400">▹</span>
+          <span class="text-slate-400 font-mono text-sm">{tool}</span>
+        </div>
+      ))}
+    </div>
   </div>
-
-  <!-- <img width="200" height="200" src="/me.png" alt={personalImageAlt} class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-black/20 dark:bg-yellow-500/5 ring-1 ring-black/70 dark:ring-white/20 " style="object-position: 50% 50%"> -->
-
 </article>
