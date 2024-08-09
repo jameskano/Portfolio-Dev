@@ -1,10 +1,16 @@
-<div class="flex items-center ">
-<span class="relative inline-flex overflow-hidden rounded-full p-[1px]">
+<div class="flex items-center">
+<span class="relative inline-flex rounded-full overflow-hidden p-[3px]">
   <span
-    class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#51E4B8_0%,#21554E_50%,#51E4B8_100%)]"
+  class="blur opacity-75 group-hover:opacity-100 absolute inset-[-10000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#00A0B4_0%,#B2EBF2_50%,#00A0B4_100%)]"
   ></span>
-  <div class="inline-flex items-center justify-center w-full px-3 py-1 text-sm text-green-800 bg-green-100 rounded-full cursor-pointer dark:bg-gray-800 dark:text-white/80 backdrop-blur-3xl whitespace-nowrap">
+  <div class="card-content inline-flex items-center justify-center w-full px-3 py-1 text-sm text-green-800 bg-green-100 rounded-full cursor-default dark:text-white/80 backdrop-blur-3xl whitespace-nowrap">
     <slot />
   </div>
 </span>
 </div>
+
+<style>
+  .card-content {
+    @apply rounded-2xl bg-gradient-to-b from-slate-700 to-slate-900;
+  }
+</style>

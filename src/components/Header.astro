@@ -3,24 +3,19 @@ import ThemeToggle from "./ThemeToggle.astro"
 
 const navItems = [
   {
-    title: "Experiencia",
-    label: "experiencia",
-    url: "/#experiencia",
+    title: "About me",
+    label: "about-me",
+    url: "/#about-me",
   },
   {
-    title: "Proyectos",
-    label: "proyectos",
-    url: "/#proyectos",
+    title: "Experience",
+    label: "experience",
+    url: "/#experience",
   },
   {
-    title: "Sobre mí",
-    label: "sobre-mi",
-    url: "/#sobre-mi",
-  },
-  {
-    title: "Contacto",
-    label: "contacto",
-    url: "mailto:miduga@gmail.com",
+    title: "Projects",
+    label: "projects",
+    url: "/#projects",
   },
 ]
 ---
@@ -29,12 +24,12 @@ const navItems = [
   class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
 >
   <nav
-    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+    class="flex px-3 text-sm font-medium rounded-full text-slate-200 justify-center items-center"
   >
     {
       navItems.map((link) => (
         <a
-          class="relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-400"
+          class="relative block px-2 py-2 transition hover:text-teal-400"
           aria-label={link.label}
           href={link.url}
         >
@@ -56,19 +51,25 @@ const navItems = [
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
             if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-yellow-500")
+              item.classList.add("text-cyan-300")
             } else {
-              item.classList.remove("text-yellow-500")
+              item.classList.remove("text-cyan-300")
             }
           })
         }
       })
     }
 
+    // const observer = new IntersectionObserver(callback, {
+    //   root: null,
+    //   rootMargin: "0px",
+    //   threshold: 0.5,
+    // })
+
     const observer = new IntersectionObserver(callback, {
       root: null,
-      rootMargin: "0px",
-      threshold: 0.3,
+      rootMargin: "-50% 0px -50% 0px",
+      threshold: 0,
     })
 
     sections.forEach((section) => {
@@ -97,7 +98,7 @@ const navItems = [
 
   @keyframes nav-shadown {
     to {
-      @apply shadow-lg ring-1 backdrop-blur dark:bg-gray-800/90 bg-white/50 ring-white/10;
+      @apply shadow-lg ring-1 backdrop-blur bg-cyan-200/50 ring-cyan-500/10;
     }
   }
 </style>

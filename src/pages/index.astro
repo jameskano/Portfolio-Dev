@@ -12,45 +12,57 @@ import Hero from "@/components/Hero.astro"
 ---
 
 <Layout
-  title="Porfolio de midudev - Desarrollador y Programador Web con 15 años de experiencia"
-  description="Contrata a midudev para crear tu aplicación web o móvil. Desarrollador Web y Creador de Contenido. Especializado en crear aplicaciones únicas."
+  title="Jaime Canovas - Developer and designer"
+  description="Hire Jaime to create your web or mobile application. Web Developer specialized in creating unique applications."
 >
   <main class="px-4">
-    <SectionContainer class="py-16 md:py-36">
+    <SectionContainer class="pb-36 pt-36 md-36">
       <Hero>
       </slot>
     </Hero>
     </SectionContainer>
     <div class="space-y-24">
-    <SectionContainer id="experiencia">
+      <SectionContainer id="about-me">
+        <h2
+          class="flex items-center mb-6 text-xl font-semibold gap-x-3 text-slate-100"
+        >
+          <ProfileCheck class="size-8" />
+          <span class="whitespace-nowrap">About me</span>
+        </h2>
+        <AboutMe />
+      </SectionContainer>
+    <SectionContainer id="experience">
       <h2
-        class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+        class="flex items-center mb-6 text-xl font-semibold gap-x-3 text-slate-100"
       >
         <Briefcase class="size-8" />
-        Experiencia laboral
+        <span class="whitespace-nowrap">Experience</span>
       </h2>
       <Experience />
     </SectionContainer>
 
-    <SectionContainer id="proyectos">
+    <SectionContainer id="projects">
       <h2
-        class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+        class="flex items-center mb-6 text-xl font-semibold gap-x-3 text-slate-100"
       >
         <CodeIcon class="size-7" />
-        Proyectos
+        <span class="whitespace-nowrap">Projects</span>
       </h2>
       <Projects />
-    </SectionContainer>
-
-    <SectionContainer id="sobre-mi">
-      <h2
-        class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
-      >
-        <ProfileCheck class="size-8" />
-        Sobre mí
-      </h2>
-      <AboutMe />
     </SectionContainer>
   </div>
   </main>
 </Layout>
+
+<style>
+  h2::after {
+    content: "";
+    display: block;
+    position: relative;
+    width: min(100%, 300px);
+    height: 1px;
+    margin-left: 15px;
+    background-color: #a5f3fc;
+    opacity: 0.1;
+  }
+</style>

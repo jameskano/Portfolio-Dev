@@ -1,90 +1,80 @@
 ---
 import GitHub from "./icons/GitHub.astro"
-import NextJS from "./icons/NextJS.astro"
-import Tailwind from "./icons/Tailwind.astro"
 import Link from "./icons/Link.astro"
 import LinkButton from "./LinkButton.astro"
+import LinkButtonAlt from "./LinkButtonAlt.astro"
+import Tag from "./Tag.astro"
 
-const TAGS = {
-  NEXT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: NextJS,
-  },
-  TAILWIND: {
-    name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
-    icon: Tailwind,
-  },
-}
 const PROJECTS = [
-  {
-    title: "SVGL - A beautiful library with SVG logos",
+{
+    title: "Workout configurator",
     description:
-      "Biblioteca de logos SVG de las marcas más populares. +10k visitas al mes. +2K svgs descargados. Creado desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://svgl.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
-    image: "/projects/svgl.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+      "A mobile-first web app designed to help you create and customize workouts for your gym sessions. Currently in its early stages of development.",
+    link: "https://workout-configurator-client.onrender.com/",
+    image: "/public/projects/w-c.webp",
+    github: 'https://github.com/jameskano/workout-configurator',
+    tags: ['React', 'HTML', 'SCSS', 'Node.js', 'Express', 'MUI', 'TypeScript', 'MongoDB', 'Mongoose'],
   },
   {
-    title: "AdventJS - Retos de programación con JavaScript y TypeScript",
+    title: "Fincas Matarrana",
     description:
-      "Plataforma gratuita con retos de programación. Más de 1 millón de visitas en un mes. +50K retos completados. Creada desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://adventjs.dev",
-    image: "/projects/adventjs.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+      "A comprehensive real estate website featuring an admin section to manage meetings, properties, and various business needs.",
+    link: "https://www.fincasmatarrana.com/",
+    image: "/public/projects/fincasmatarrana.webp",
+    tags: ['Inmovilla', 'HTML', 'CSS', 'JavaScript'],
+  },
+  {
+    title: "Retouching portfolio",
+    description:
+      "Showcasing my personal design and retouching work, featuring a minimalist aesthetic and a simple, intuitive structure.",
+    link: "https://jameskano.github.io/portafolio/bienvenida.html",
+    github: "https://github.com/jameskano/portafolio",
+    image: "/public/projects/portfolio-design.webp",
+    tags: ['HTML', 'CSS', 'JavaScript'],
   },
 ]
 ---
 
-<div class="flex flex-col gap-y-16">
+<div class="flex flex-col gap-y-16 group/list">
   {
     PROJECTS.map(({ image, title, description, tags, link, github }) => (
-    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-  <div class="w-full md:w-1/2">
-    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-      <img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
+  <article class="relative flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0 p-6 hover:bg-slate-800/50 rounded-2xl transition-all duration-100 ease-in-out hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.2)]">
+    <div class="w-full md:w-[40%]">
+      <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transform shadow-lg overflow-clip rounded-xl sm:rounded-xl lg:border lg:border-slate-800">
+        <img class="object-cover object-top w-full h-56 sm:h-full" loading="lazy" src={image} />
+        <div class="absolute left-0 top-0 w-full h-full bg-cyan-400/50 group-hover:hidden transition-all"></div>
+      </div>
     </div>
-  </div>
 
-  <div class="w-full md:w-1/2 md:max-w-lg">
-    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-      {title}
-    </h3>
-    <div class="flex flex-wrap mt-2">
-      <ul class="flex flex-row mb-2 gap-x-2">
+    <div class="w-full">
+      <h3 class="text-xl font-bold text-slate-100">
+        {title}
+      </h3>
+      <div class="flex flex-wrap mt-2">
+        <ul class="flex flex-row flex-wrap mb-2 gap-2">
           {tags.map((tag) => (
-            <li>
-              <span
-                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-              >
-                <tag.icon class="size-4" />
-                {tag.name}
-              </span>
-            </li>
+            <Tag>{tag}</Tag>
           ))}
         </ul>
 
-      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
+      <div class="mt-2 text-slate-300">{description}</div>
       <footer class="flex items-end justify-start mt-4 gap-x-4">
           {github && (
-            <LinkButton href={github}>
+            <LinkButtonAlt href={github}>
               <GitHub class="size-6" />
               Code
-              
-            </LinkButton>
+            </LinkButtonAlt>
           )}
           {link && (
-            <LinkButton href={link}>
+            <LinkButtonAlt href={link}>
               <Link class="size-4" />
               Preview
-            </LinkButton>
+            </LinkButtonAlt>
           )}
         </footer>
     </div>
   </div>
-</article>
+    </article>
     ))
   }
 </div>

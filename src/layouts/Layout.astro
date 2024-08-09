@@ -27,11 +27,11 @@ const { description, title } = Astro.props
 
   <body class="relative text-black dark:text-white">
     <div
-      class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-gray-950
-      bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
-      dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+      class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full dark:bg-altBg
+      dark:bg-[radial-gradient(ellipse_70%_70%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
     >
     </div>
+    <div class="gradient" id="gradient"></div>
     <Header />
     <slot />
     <Footer />
@@ -41,7 +41,7 @@ const { description, title } = Astro.props
       }
 
       html {
-        font-family: "Onest Variable", system-ui, sans-serif;
+        font-family: "Roboto", system-ui, sans-serif;
         scroll-behavior: smooth;
       }
 
@@ -51,7 +51,19 @@ const { description, title } = Astro.props
         flex-direction: column;
         min-height: 100vh;
         overscroll-behavior: none;
+        box-sizing: border-box;
       }
+
+      .gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle at center, rgba(29, 78, 216, 0.15), transparent 80%);
+            transition: background-position 0.1s;
+        }
 
       @media (prefers-reduced-motion: reduce) {
         html {
@@ -61,7 +73,7 @@ const { description, title } = Astro.props
 
       @media (prefers-color-scheme: dark) {
         body {
-          color: rgba(255, 255, 255, 0.9);
+          color: rgba(148 163 184, 0.9);
         }
       }
 
@@ -111,5 +123,21 @@ const { description, title } = Astro.props
         }
       }
     </style>
+
+<script>
+  document.addEventListener('mousemove', function(event) {
+      const gradient = (document.getElementById('gradient') as HTMLDivElement);
+      const calculateSize = () => {
+        const minSize = 400;
+        const maxSize = 600;
+        const size = Math.max(minSize, Math.min(window.innerWidth * 0.7, maxSize));
+        return size === minSize ? window.innerWidth * 0.9 : size;
+    }
+
+    const size = calculateSize()
+
+      gradient.style.background = `radial-gradient(circle ${size}px at ${event.clientX}px ${event.clientY}px, rgba(29, 78, 216, 0.15), transparent 80%)`;
+  });
+</script>
   </body>
 </html>
