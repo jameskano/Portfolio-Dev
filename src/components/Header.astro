@@ -1,6 +1,4 @@
 ---
-import ThemeToggle from "./ThemeToggle.astro"
-
 const navItems = [
   {
     title: "About me",
@@ -21,15 +19,16 @@ const navItems = [
 ---
 
 <header
-  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
+  class="fixed top-0 z-10 flex w-full items-center justify-center mx-auto mt-2"
 >
   <nav
-    class="flex px-3 text-sm font-medium rounded-full text-slate-200 justify-center items-center"
+    id="header-nav"
+    class="flex items-center justify-center rounded-full px-3 text-sm font-medium text-[rgb(var(--color-text-muted))]"
   >
     {
       navItems.map((link) => (
         <a
-          class="relative block px-2 py-2 transition hover:text-teal-400"
+          class="relative block px-3 py-2 transition-colors duration-200 hover:text-[rgb(var(--color-accent))] focus:outline-none focus-visible:text-[rgb(var(--color-accent))]"
           aria-label={link.label}
           href={link.url}
         >
@@ -37,7 +36,6 @@ const navItems = [
         </a>
       ))
     }
-    <ThemeToggle />
   </nav>
 </header>
 
@@ -50,21 +48,14 @@ const navItems = [
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-cyan-300")
-            } else {
-              item.classList.remove("text-cyan-300")
-            }
+            item.classList.toggle(
+              "is-active",
+              item.getAttribute("aria-label") === entry.target.id,
+            )
           })
         }
       })
     }
-
-    // const observer = new IntersectionObserver(callback, {
-    //   root: null,
-    //   rootMargin: "0px",
-    //   threshold: 0.5,
-    // })
 
     const observer = new IntersectionObserver(callback, {
       root: null,
@@ -76,7 +67,6 @@ const navItems = [
       observer.observe(section)
     })
 
-    // Cleanup function
     document.onvisibilitychange = () => {
       if (document.visibilityState === "hidden") {
         observer.disconnect()
@@ -96,9 +86,15 @@ const navItems = [
     animation-range: 0 100px;
   }
 
+  a.is-active {
+    color: rgb(var(--color-accent));
+  }
+
   @keyframes nav-shadown {
     to {
-      @apply shadow-lg ring-1 backdrop-blur bg-cyan-200/50 ring-cyan-500/10;
+      @apply shadow-lg ring-1 backdrop-blur;
+      background-color: rgba(var(--color-surface), 0.7);
+      border-color: rgba(var(--color-border), 0.2);
     }
   }
 </style>

@@ -8,34 +8,30 @@ import SocialPillAlt from "./SocialPillAlt.astro"
 ---
 
 <footer
-  class="opacity-80 m-4 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-4 flex justify-center"
+  class="container mx-auto mt-16 mb-4 flex w-full justify-center px-4 opacity-90 lg:max-w-4xl md:max-w-2xl"
 >
   <div
-    class="rounded-lg w-full max-w-screen-xl mx-auto flex flex-col sm:flex-row items-center sm:justify-between justify-center py-4"
+    class="mx-auto flex w-full max-w-screen-xl flex-col items-center justify-center gap-3 rounded-lg border-t border-[rgba(var(--color-border),0.18)] py-4 sm:flex-row sm:justify-between"
   >
-  <ul
-    class="flex flex-wrap items-center text-sm font-medium dark:text-white/90 sm:mt-0"
-  >
-  <nav class="flex flex-row gap-2 ">
-    <SocialPill href="mailto:jaimecanovasdesign@gmail.com">
-      <MailIcon class="size-6" />
-    </SocialPill>
-    <SocialPill href="https://www.linkedin.com/in/jaime-canovas-incertis">
-      <LinkedInIcon class="size-6" />
-    </SocialPill>
-    <SocialPill href="https://www.github.com/jameskano">
-      <GitHub class="size-6" />
-    </SocialPill>
-  </nav>
-  </ul>
+    <nav class="flex flex-row gap-2">
+      <SocialPill href="mailto:jaimecanovasdesign@gmail.com">
+        <MailIcon class="size-6" />
+      </SocialPill>
+      <SocialPill href="https://www.linkedin.com/in/jaime-canovas-incertis">
+        <LinkedInIcon class="size-6" />
+      </SocialPill>
+      <SocialPill href="https://www.github.com/jameskano">
+        <GitHub class="size-6" />
+      </SocialPill>
+    </nav>
 
-    <span class="text-sm sm:text-center text-zinc-800/90 dark:text-zinc-200/90 mt-3">
-      Designed and built by Jaime Canovas. Â© {currentYear}
+    <span class="mt-1 text-sm text-[rgb(var(--color-text-muted))] sm:text-center">
+      Designed and built by Jaime Canovas. © {currentYear}
     </span>
   </div>
 </footer>
 
-<nav class="hidden flex-row gap-4 alt-links fixed bottom-1 left-1/2 transform -translate-x-1/2 rounded-full pl-4 pr-4 pt-2 pb-2">
+<nav class="alt-links fixed bottom-3 left-1/2 hidden -translate-x-1/2 flex-row gap-4 rounded-full border border-[rgba(var(--color-border),0.18)] bg-[rgba(var(--color-surface),0.7)] px-4 py-2 backdrop-blur md:hidden">
   <SocialPillAlt href="mailto:jaimecanovasdesign@gmail.com">
     <MailIcon class="size-5" />
   </SocialPillAlt>
@@ -49,35 +45,34 @@ import SocialPillAlt from "./SocialPillAlt.astro"
 
 <script>
   const checkScrollPosition = () => {
-    const scrollPosition = window.scrollY;
-        const documentHeight = document.documentElement.scrollHeight;
-        const windowHeight = window.innerHeight;
-        const distanceFromBottom = documentHeight - (scrollPosition + windowHeight);
+    const scrollPosition = window.scrollY
+    const documentHeight = document.documentElement.scrollHeight
+    const windowHeight = window.innerHeight
+    const distanceFromBottom = documentHeight - (scrollPosition + windowHeight)
+    const altLinks = document.querySelector(".alt-links") as HTMLElement | null
 
-        if (distanceFromBottom > 100) {
-            (document.querySelector('.alt-links') as HTMLElement).style.display = 'flex';
-        } else {
-            (document.querySelector('.alt-links') as HTMLElement).style.display = 'none';
-        }
+    if (!altLinks) return
+
+    if (distanceFromBottom > 100) {
+      altLinks.style.display = "flex"
+    } else {
+      altLinks.style.display = "none"
+    }
   }
 
-  window.addEventListener('scroll', checkScrollPosition);
+  window.addEventListener("scroll", checkScrollPosition)
 </script>
 
 <style>
   .alt-links {
     animation: nav-shadown 0.2s linear both;
-    /* animation-timeline: scroll(); */
     animation-range: 0 100px;
   }
 
   @keyframes nav-shadown {
     to {
-      @apply shadow-lg ring-1 backdrop-blur bg-teal-200/50 ring-teal-500/10;
+      @apply shadow-lg ring-1 backdrop-blur;
+      background-color: rgba(var(--color-surface), 0.75);
     }
-  }
-
-  @media (max-width: 768px) {
-
   }
 </style>

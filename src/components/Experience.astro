@@ -1,38 +1,84 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro"
-const EXPERIENCIE = [
+
+const EXPERIENCE = [
   {
-    date: "At present",
+    date: "2024 - Present",
+    title: "Software Engineer",
+    company: "Capgemini",
+    project: "Large-scale web and mobile products",
+    client: "Telefonica",
+    description:
+      "Leading frontend development for responsive telecom products across web and mobile, balancing product delivery, technical quality, and day-to-day coordination across distributed teams.",
+    highlights: [
+      "Built large-scale interfaces with React and TypeScript for telecom-focused products.",
+      "Delivered pixel-perfect and accessible UI aligned with design system and UX requirements.",
+      "Maintained technical documentation and pushed frontend best practices for long-term maintainability.",
+      "Coordinated daily with offshore frontend teams in India and worked directly with business stakeholders to turn strategic goals into technical solutions.",
+    ],
+    tags: ["React", "TypeScript", "Accessibility", "Responsive Design", "Documentation"],
+  },
+  {
+    date: "Present",
     title: "Frontend Engineer",
     company: "Capgemini",
+    project: "Banking products and user flows",
+    client: "Openbank",
     description:
-      "Contributed to various projects and solutions for companies such as InterBev and Openbank.",
-      tags: ['React', 'TypeScript', 'Ionic', 'SCSS', 'Styled-Components', 'Jest', 'Storybook', 'Microservices'],
+      "Building and refining frontend experiences for banking products in a large-scale enterprise environment, with a strong focus on maintainability, delivery quality, and day-to-day collaboration with multidisciplinary teams.",
+    highlights: [
+      "Implemented product features and UI flows with React and TypeScript.",
+      "Worked in a component-driven setup with testing and shared frontend standards.",
+    ],
+    tags: ["React", "TypeScript", "Styled Components", "Jest", "Storybook"],
   },
   {
-    date: "January 2022",
+    date: "Present",
+    title: "Frontend Engineer",
+    company: "Capgemini",
+    project: "Cross-platform internal solutions",
+    client: "Interbev",
+    description:
+      "Contributed to cross-platform applications for a global client, translating business requirements into robust interfaces and helping keep the frontend layer consistent across features and teams.",
+    highlights: [
+      "Built and maintained interfaces with Ionic, React, TypeScript, and SCSS.",
+      "Worked within a broader architecture that required coordination with multiple services and teams.",
+    ],
+    tags: ["Ionic", "React", "TypeScript", "SCSS", "Microservices"],
+  },
+  {
+    date: "2022",
     title: "Frontend Engineer",
     company: "Cleverpy",
+    project: "Water management platform",
     description:
-      "Served as the main software engineer for a water management web application featuring georeferenced elements. Additionally, I managed some technical hiring processes and coached new frontend developers.",
-    tags: ['React', 'TypeScript', 'SCSS', 'Cypress', 'Jest', 'Openlayers', 'DevExtreme', 'GeoServer'],
+      "Led frontend development for a web application focused on water management and georeferenced data, taking ownership of the product implementation while also supporting team growth.",
+    highlights: [
+      "Built map-heavy interfaces and data workflows for a specialized domain product.",
+      "Participated in technical hiring processes and helped onboard junior frontend developers.",
+    ],
+    tags: ["React", "TypeScript", "SCSS", "Cypress", "Jest", "OpenLayers", "DevExtreme", "GeoServer"],
   },
   {
-    date: "June 2021",
+    date: "2021",
     title: "Frontend Developer",
     company: "Garvira & Partners",
     description:
-      "Designed websites and web applications for various companies, with direct interaction with customers.",
-    tags: ['JavaScript', 'CSS', 'HTML', 'Wordpress', 'Photoshop']
+      "Designed and developed websites and web applications for different clients, combining visual design work with frontend implementation and direct communication with stakeholders.",
+    highlights: [
+      "Delivered client-facing websites with HTML, CSS, JavaScript, and jQuery.",
+      "Worked close to customers, which strengthened both product sense and communication skills.",
+    ],
+    tags: ["JavaScript", "CSS", "HTML", "jQuery", "WordPress", "Photoshop"],
   },
 ]
 ---
 
 <ol class="relative mt-16">
   {
-    EXPERIENCIE.map((experiencie) => (
-      <li class="">
-        <ExperienceItem {...experiencie} />
+    EXPERIENCE.map((experience) => (
+      <li>
+        <ExperienceItem {...experience} />
       </li>
     ))
   }

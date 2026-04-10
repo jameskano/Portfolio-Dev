@@ -1,82 +1,78 @@
 ---
 import GitHub from "./icons/GitHub.astro"
 import Link from "./icons/Link.astro"
-import LinkButton from "./LinkButton.astro"
 import LinkButtonAlt from "./LinkButtonAlt.astro"
 import Tag from "./Tag.astro"
 
 const PROJECTS = [
-{
+  {
     title: "Workout configurator",
     description:
-      "A mobile-first web app designed to help you create and customize workouts for your gym sessions. Currently in its early stages of development.",
+      "A mobile-first workout planning app focused on building and organizing gym routines, with flows for creating exercises, structuring sessions, and keeping workout data easy to review and edit.",
     link: "https://workout-configurator-client.onrender.com/",
     image: "https://drive.google.com/thumbnail?sz=w1000&id=1LUWhTKoS-I0GGGGDYO-kvf8L9psWtH6r",
-    github: 'https://github.com/jameskano/workout-configurator',
-    tags: ['React', 'HTML', 'SCSS', 'Node.js', 'Express', 'MUI', 'TypeScript', 'MongoDB', 'Mongoose'],
+    github: "https://github.com/jameskano/workout-configurator",
+    tags: ["React", "HTML", "SCSS", "Node.js", "Express", "MUI", "TypeScript", "MongoDB", "Mongoose"],
   },
   {
     title: "Fincas Matarrana",
     description:
-      "A comprehensive real estate website featuring an admin section to manage meetings, properties, and various business needs.",
+      "A real estate website for a rural property business in Teruel, built around property discovery, filtering, multilingual content, and lead capture for buyers interested in houses, land, and rustic properties.",
     link: "https://www.fincasmatarrana.com/",
     image: "https://drive.google.com/thumbnail?sz=w1000&id=1qiAqx6px8_1hNEE9-MlHI_CZRX9e-aOA",
-    tags: ['Inmovilla', 'HTML', 'CSS', 'JavaScript'],
+    tags: ["Inmovilla", "HTML", "CSS", "JavaScript"],
   },
   {
     title: "Retouching portfolio",
     description:
-      "Showcasing my personal design and retouching work, featuring a minimalist aesthetic and a simple, intuitive structure.",
+      "A personal portfolio for showcasing retouching and visual design work, using a minimal presentation that gives priority to the imagery and keeps navigation simple and unobtrusive.",
     link: "https://jameskano.github.io/portafolio/bienvenida.html",
     image: "https://drive.google.com/thumbnail?sz=w1000&id=1flSFfr8cAHcCK1CiBbP5JrehOmKvflEB",
-    tags: ['HTML', 'CSS', 'JavaScript'],
+    tags: ["HTML", "CSS", "JavaScript", "Bootstrap"],
   },
 ]
 ---
 
-<div class="flex flex-col gap-y-16 group/list">
+<div class="group/list flex flex-col gap-y-16">
   {
     PROJECTS.map(({ image, title, description, tags, link, github }) => (
-  <article class="relative flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0 p-6 hover:bg-slate-800/50 rounded-2xl transition-all duration-100 ease-in-out hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.2)]">
-    <div class="w-full md:w-[40%]">
-      <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transform shadow-lg overflow-clip rounded-xl sm:rounded-xl lg:border lg:border-slate-800">
-        <img class="object-cover object-top w-full sm:h-full" loading="lazy" src={image} />
-        <div class="absolute left-0 top-0 w-full h-full sm:bg-cyan-400/50 group-hover:hidden transition-all"></div>
-      </div>
-    </div>
+      <article class="relative flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0 p-6 hover:bg-slate-800/50 rounded-2xl transition-all duration-100 ease-in-out hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.2)]">
+        <div class="w-full md:w-[40%]">
+          <div class="relative col-span-6 row-span-5 overflow-clip rounded-xl border border-[rgba(var(--color-border),0.18)] shadow-lg shadow-slate-950/10">
+            <img class="aspect-[16/10] w-full object-cover object-top" loading="lazy" src={image} alt={title} />
+            <div class="absolute left-0 top-0 h-full w-full bg-[rgba(var(--color-accent),0.08)] transition-opacity duration-200 group-hover:opacity-0"></div>
+          </div>
+        </div>
 
-    <div class="w-full">
-      <h3 class="text-xl font-bold text-slate-100">
-        {title}
-      </h3>
-      <div class="flex flex-wrap mt-2">
-        <ul class="flex flex-row flex-wrap mb-2 gap-2">
-          {tags.map((tag) => (
-            <Tag>{tag}</Tag>
-          ))}
-        </ul>
+        <div class="w-full">
+          <h3 class="text-xl font-bold text-[rgb(var(--color-text))]">
+            {title}
+          </h3>
+          <div class="mt-2 flex flex-wrap">
+            <ul class="mb-2 flex flex-row flex-wrap gap-2">
+              {tags.map((tag) => (
+                <Tag>{tag}</Tag>
+              ))}
+            </ul>
 
-      <div class="mt-2 text-slate-300">{description}</div>
-      <footer class="flex items-end justify-start mt-4 gap-x-4">
-          {github && (
-            <LinkButtonAlt href={github}>
-              <GitHub class="size-6" />
-              Code
-            </LinkButtonAlt>
-          )}
-          {link && (
-            <LinkButtonAlt href={link}>
-              <Link class="size-4" />
-              Preview
-            </LinkButtonAlt>
-          )}
-        </footer>
-    </div>
-  </div>
-    </article>
+            <div class="mt-2 text-slate-300">{description}</div>
+            <footer class="mt-4 flex items-end justify-start gap-x-4">
+              {github && (
+                <LinkButtonAlt href={github}>
+                  <GitHub class="size-6" />
+                  Code
+                </LinkButtonAlt>
+              )}
+              {link && (
+                <LinkButtonAlt href={link}>
+                  <Link class="size-4" />
+                  Preview
+                </LinkButtonAlt>
+              )}
+            </footer>
+          </div>
+        </div>
+      </article>
     ))
   }
 </div>
-
-
-

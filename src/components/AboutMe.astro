@@ -1,34 +1,49 @@
 ---
- const personalImageAlt = ""
- const tooling = ['React', 'TypeScript', 'JavaScript', 'CSS', 'SCSS', 'HTML', 'Git', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Jest', 'Cypress', 'Photoshop', 'SQL', 'Jquery', 'React Native']
+const tooling = [
+  "React",
+  "TypeScript",
+  "JavaScript",
+  "Capacitor",
+  "SCSS",
+  "Styled Components",
+  "Jest",
+  "Cypress",
+  "Node.js",
+  "Express",
+  "MongoDB",
+  "OpenLayers",
+  "Git",
+  "Github Copilot",
+  "Python",
+  "PostgreSQL",
+  "Supabase",
+]
 ---
 
 <article class="flex flex-col items-center justify-center gap-8 text-slate-300 md:flex-row">
   <div
-    class="[&>p>a>strong]:font-bold [&>p]:mb-4 [&>p>a>strong]:text-cyan-400 [&>p>a>strong]:font-normal [&>p>a>strong]:font-mono text-pretty order-2 md:order-1"
+    class="order-2 text-pretty [&>p]:mb-4 [&>p>a]:underline-offset-4 [&>p>a]:transition-colors [&>p>a]:hover:text-[rgb(var(--color-accent))] [&>p>a>strong]:font-mono [&>p>a>strong]:font-normal [&>p>a>strong]:text-[rgb(var(--color-accent))] md:order-1"
   >
     <p>
-      I'm Jaime, from Spain. Back in the day I started in graphic design and then I switched to programming with JavaScript, aiming to combine my design skills with coding. I have developed software at a <a href="https://garvira.com/" target="_blank"><strong
-        >digital services cooperative</strong></a>, a <a href="https://cleverpy.com/" target="_blank"><strong>start-up</strong></a> and currently, I'm working in different projects at a <a href="https://www.capgemini.com/es-es/" target="_blank"><strong>large multinational company</strong></a>
-        .
-    </p>
-
-    <p class="[&>strong]:text-yellow-500 dark:[&>strong]:text-cyan-400 [&>strong]:font-normal [&>strong]:font-mono [&>strong]:font-bold">
-      I love creating <strong>appealing</strong>, <strong>engaging</strong> and <strong>pixel perfect</strong> applications that are also well-built under the hood.
+      I'm Jaime, a frontend engineer from Zaragoza with a background in graphic design. That mix of design sensitivity and engineering discipline still shapes the way I build products: clean interfaces, strong visual polish, and code that stays maintainable as projects grow.
     </p>
 
     <p>
-      In my free time, I enjoy learning new things, developing my own projects, and exploring new worlds both in and out of my computer.
+      I've worked in a <a href="https://garvira.com/" target="_blank"><strong>digital services cooperative</strong></a>, a <a href="https://cleverpy.com/" target="_blank"><strong>product-focused start-up</strong></a>, and currently at <a href="https://www.capgemini.com/es-es/" target="_blank"><strong>Capgemini</strong></a>, contributing to frontend solutions for different clients and business contexts.
+    </p>
+
+    <p class="[&>strong]:font-mono [&>strong]:font-normal [&>strong]:font-bold [&>strong]:text-[rgb(var(--color-accent))]">
+      I enjoy building <strong>clear</strong>, <strong>reliable</strong>, and <strong>well-crafted</strong> web applications, especially when the work involves turning complex requirements into interfaces that feel simple to use.
     </p>
 
     <p>
-      Some technologies I frecuently use:
+      Technologies I use most often:
     </p>
-    <div class="grid grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))]">
+    <div class="grid grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] gap-x-4 gap-y-2">
       {tooling.map((tool) => (
-        <div>
-          <span class="text-cyan-400">▹</span>
-          <span class="text-slate-400 font-mono text-sm">{tool}</span>
+        <div class="flex items-center gap-2">
+          <span class="text-[rgb(var(--color-accent))]">&gt;</span>
+          <span class="font-mono text-sm text-[rgb(var(--color-text-muted))]">{tool}</span>
         </div>
       ))}
     </div>

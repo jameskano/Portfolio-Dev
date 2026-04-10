@@ -1,116 +1,44 @@
 ---
 import SunIcon from "./icons/Sun.astro"
 import MoonIcon from "./icons/Moon.astro"
-import SystemIcon from "./icons/System.astro"
-
-const THEMES = ["Light", "Dark", "System"]
 ---
 
-<!-- <div class="relative ml-1 mr-1">
-  <button
-    id="theme-toggle-btn"
-    class="appearance-none border-none flex hover:scale-125 transition"
-  >
-    <SunIcon id="light" class="theme-toggle-icon size-5 transition-all" />
-    <MoonIcon
-      id="dark"
-      class="theme-toggle-icon absolute size-5 transition-all"
-    />
-    <SystemIcon
-      id="system"
-      class="theme-toggle-icon absolute size-5 transition-all"
-    />
-  </button>
-  <div
-    id="themes-menu"
-    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-slate-100 bg-white/90 dark:bg-slate-900/90 dark:border-slate-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
-  >
-    <ul>
-      {
-        THEMES.map((theme) => (
-          <li class="themes-menu-option px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-slate-500/50 rounded-sm">
-            {theme}
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-</div> -->
-
-<style>
-  #themes-menu.open {
-    display: inline;
-    animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  }
-
-  @keyframes scale-up-center {
-    from {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-</style>
+<button
+  id="theme-toggle-btn"
+  type="button"
+  aria-label="Toggle theme"
+  class="ml-1 inline-flex size-9 items-center justify-center rounded-full border border-[rgba(var(--color-border),0.28)] bg-[rgba(var(--color-surface),0.5)] text-[rgb(var(--color-text-muted))] transition-colors duration-200 hover:text-[rgb(var(--color-accent))] focus:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--color-bg))]"
+>
+  <SunIcon id="theme-icon-light" class="size-4" />
+  <MoonIcon id="theme-icon-dark" class="hidden size-4" />
+</button>
 
 <script is:inline>
-  let remove = null
-  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)")
-  const themesMenu = document.getElementById("themes-menu")
+  const themeToggle = document.getElementById("theme-toggle-btn")
+  const lightIcon = document.getElementById("theme-icon-light")
+  const darkIcon = document.getElementById("theme-icon-dark")
 
-  const getThemePreference = () => {
-    return 'dark';
+  const getThemePreference = () =>
+    typeof localStorage !== "undefined"
+      ? localStorage.getItem("theme") ?? "dark"
+      : "dark"
 
-    if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("theme") ?? "system"
-    }
+  const syncTheme = () => {
+    const isDark = getThemePreference() === "dark"
 
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light"
+    document.documentElement.classList.toggle("dark", isDark)
+    lightIcon?.classList.toggle("hidden", isDark)
+    darkIcon?.classList.toggle("hidden", !isDark)
   }
 
-  const updateIcon = (themePreference) => {
-    document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
-      element.style.scale = element.id === themePreference ? "1" : "0"
-    })
-  }
+  syncTheme()
 
-  const updateTheme = () => {
-    if (remove != null) {
-      remove()
-    }
-    matchMedia.addEventListener("change", updateTheme)
-    remove = () => {
-      matchMedia.removeEventListener("change", updateTheme)
-    }
+  themeToggle?.addEventListener("click", () => {
+    const nextTheme = document.documentElement.classList.contains("dark")
+      ? "light"
+      : "dark"
 
-    const themePreference = getThemePreference()
-    const isDark =
-      themePreference === "dark" ||
-      (themePreference === "system" && matchMedia.matches)
-
-    updateIcon(themePreference)
-    document.documentElement.classList[isDark ? "add" : "remove"]("dark")
-  }
-
-  updateTheme()
-
-  document.addEventListener("click", () => themesMenu.classList.remove("open"))
-
-  document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
-    e.stopPropagation()
-    const isClosed = !themesMenu.classList.contains("open")
-    themesMenu.classList[isClosed ? "add" : "remove"]("open")
-  })
-
-  document.querySelectorAll(".themes-menu-option").forEach((element) => {
-    element.addEventListener("click", (e) => {
-      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim())
-      updateTheme()
-    })
+    localStorage.setItem("theme", nextTheme)
+    syncTheme()
   })
 </script>

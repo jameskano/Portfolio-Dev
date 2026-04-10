@@ -4,9 +4,9 @@ import Badge from "@/components/Badge.astro"
 ---
 
 <div class="max-w-xl">
-  <div class="flex gap-4 mb-4 items-center">
+  <div class="mb-4 flex items-center gap-4">
     <img
-      class="rounded-full shadow-lg size-16"
+      class="size-16 rounded-full shadow-lg"
       src="/avatar.webp"
       alt={personalImageAlt}
     />
@@ -14,15 +14,15 @@ import Badge from "@/components/Badge.astro"
       class="flex items-center transition md:justify-center md:hover:scale-105"
     >
       <Badge>Available to work</Badge>
-  </div>
+    </div>
   </div>
   <h1
-    class="text-3xl font-bold tracking-tight sm:text-4xl text-slate-100"
+    class="text-3xl font-bold tracking-tight text-[rgb(var(--color-text))] sm:text-4xl"
   >
     Hey, I'm Jaime Canovas!
   </h1>
   <p
-    class="mt-4 text-2xl [&>strong]:text-cyan-400 [&>strong]:font-semibold text-slate-300"
+    class="mt-4 text-2xl text-[rgb(var(--color-text-muted))] [&>strong]:font-semibold [&>strong]:text-[rgb(var(--color-accent))]"
   >
     <strong>Frontend Engineer</strong>
   </p>

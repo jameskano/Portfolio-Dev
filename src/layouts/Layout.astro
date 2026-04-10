@@ -14,7 +14,7 @@ const { description, title } = Astro.props
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -25,10 +25,9 @@ const { description, title } = Astro.props
     <ViewTransitions />
   </head>
 
-  <body class="relative text-black dark:text-white">
+  <body class="relative bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))]">
     <div
-      class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full dark:bg-altBg
-      dark:bg-[radial-gradient(ellipse_70%_70%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+      class="absolute inset-0 z-[-2] min-h-screen w-full bg-[radial-gradient(ellipse_70%_70%_at_50%_-20%,rgba(34,211,238,0.18),rgba(255,255,255,0))]"
     >
     </div>
     <div class="gradient hidden sm:block" id="gradient"></div>
@@ -37,43 +36,49 @@ const { description, title } = Astro.props
     <Footer />
     <style is:global>
       :root {
-        color-scheme: light dark;
+        color-scheme: dark;
+        --color-bg: 13 21 38;
+        --color-surface: 15 23 42;
+        --color-surface-muted: 30 41 59;
+        --color-text: 226 232 240;
+        --color-text-muted: 148 163 184;
+        --color-border: 71 85 105;
+        --color-accent: 34 211 238;
       }
 
       html {
-        font-family: "Roboto", system-ui, sans-serif;
+        font-family: "Onest Variable", system-ui, sans-serif;
         scroll-behavior: smooth;
       }
 
       body {
-        color: rgba(17, 17, 17, 0.9);
         display: flex;
         flex-direction: column;
         min-height: 100vh;
         overscroll-behavior: none;
         box-sizing: border-box;
+        background-color: rgb(var(--color-bg));
       }
 
       .gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            background: radial-gradient(circle at center, rgba(29, 78, 216, 0.15), transparent 80%);
-            transition: background-position 0.1s;
-        }
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        opacity: 0.8;
+        background: radial-gradient(circle at center, rgba(var(--color-accent), 0.12), transparent 75%);
+        transition: background-position 0.1s;
+      }
 
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
         }
-      }
 
-      @media (prefers-color-scheme: dark) {
-        body {
-          color: rgba(148 163 184, 0.9);
+        .gradient {
+          display: none;
         }
       }
 
@@ -87,57 +92,36 @@ const { description, title } = Astro.props
         to {
           backdrop-filter: blur(20px);
           border-width: 1px;
-          border-color: rgba(0, 0, 0);
+          border-color: rgba(var(--color-border), 0.25);
           padding: 0.25rem 0.75rem;
           display: flex;
           flex-direction: row;
           align-items: center;
-          background-color: rgb(229, 229, 229);
+          background-color: rgba(var(--color-surface), 0.72);
           border-radius: 9999px;
-        }
-      }
-
-      @media (prefers-color-scheme: dark) {
-        @keyframes blur {
-          from {
-            border: 0px;
-          }
-          to {
-            box-shadow:
-              0px 5px 50px -5px rgba(0, 0, 0, 0.1),
-              0px 0px 0 1px rgba(0, 0, 0, 0.3);
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(20px);
-            border-width: 1px;
-            border-color: rgba(0, 0, 0);
-            padding-left: 0.75rem;
-            padding-right: 0.75rem;
-            padding-top: 0.25rem;
-            padding-bottom: 0.25rem;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 9999px;
-          }
+          box-shadow:
+            0 12px 30px -22px rgba(15, 23, 42, 0.45),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08);
         }
       }
     </style>
 
-<script>
-  document.addEventListener('mousemove', function(event) {
-      const gradient = (document.getElementById('gradient') as HTMLDivElement);
-      const calculateSize = () => {
-        const minSize = 400;
-        const maxSize = 600;
-        const size = Math.max(minSize, Math.min(window.innerWidth * 0.7, maxSize));
-        return size === minSize ? window.innerWidth * 0.9 : size;
-    }
+    <script>
+      document.addEventListener("mousemove", function (event) {
+        const gradient = document.getElementById("gradient") as HTMLDivElement | null
+        if (!gradient) return
 
-    const size = calculateSize()
+        const calculateSize = () => {
+          const minSize = 400
+          const maxSize = 600
+          const size = Math.max(minSize, Math.min(window.innerWidth * 0.7, maxSize))
+          return size === minSize ? window.innerWidth * 0.9 : size
+        }
 
-      gradient.style.background = `radial-gradient(circle ${size}px at ${event.clientX}px ${event.clientY}px, rgba(29, 78, 216, 0.15), transparent 80%)`;
-  });
-</script>
+        const size = calculateSize()
+
+        gradient.style.background = `radial-gradient(circle ${size}px at ${event.clientX}px ${event.clientY}px, rgba(var(--color-accent), 0.14), transparent 80%)`
+      })
+    </script>
   </body>
 </html>

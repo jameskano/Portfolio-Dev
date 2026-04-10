@@ -1,16 +1,21 @@
 <div class="flex items-center">
-<span class="relative inline-flex rounded-full overflow-hidden p-[3px]">
-  <span
-  class="blur opacity-75 group-hover:opacity-100 absolute inset-[-10000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#00A0B4_0%,#B2EBF2_50%,#00A0B4_100%)]"
-  ></span>
-  <div class="card-content inline-flex items-center justify-center w-full px-3 py-1 text-sm text-green-800 bg-green-100 rounded-full cursor-default dark:text-white/80 backdrop-blur-3xl whitespace-nowrap">
-    <slot />
-  </div>
-</span>
+  <span class="relative inline-flex overflow-hidden rounded-full p-[3px]">
+    <span
+      class="absolute inset-[-10000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#00A0B4_0%,#B2EBF2_50%,#00A0B4_100%)] opacity-75 blur group-hover:opacity-100"
+    ></span>
+    <div class="card-content inline-flex w-full cursor-default items-center justify-center whitespace-nowrap rounded-full px-3 py-1 text-sm text-[rgb(var(--color-text))] backdrop-blur-3xl">
+      <slot />
+    </div>
+  </span>
 </div>
 
 <style>
   .card-content {
-    @apply rounded-2xl bg-gradient-to-b from-slate-700 to-slate-900;
+    background: linear-gradient(
+      180deg,
+      rgba(var(--color-surface), 0.95) 0%,
+      rgba(var(--color-surface-muted), 0.92) 100%
+    );
+    border: 1px solid rgba(var(--color-border), 0.18);
   }
 </style>

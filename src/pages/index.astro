@@ -16,41 +16,39 @@ import Hero from "@/components/Hero.astro"
   description="Hire Jaime to create your web or mobile application. Web Developer specialized in creating unique applications."
 >
   <main class="px-4">
-    <SectionContainer class="pb-36 pt-36 md-36">
-      <Hero>
-      </slot>
-    </Hero>
+    <SectionContainer class="pb-28 pt-32 md:pb-36 md:pt-36">
+      <Hero />
     </SectionContainer>
     <div class="space-y-24">
       <SectionContainer id="about-me">
         <h2
-          class="flex items-center mb-6 text-xl font-semibold gap-x-3 text-slate-100"
+          class="mb-6 flex items-center gap-x-3 text-xl font-semibold text-[rgb(var(--color-text))]"
         >
           <ProfileCheck class="size-8" />
           <span class="whitespace-nowrap">About me</span>
         </h2>
         <AboutMe />
       </SectionContainer>
-    <SectionContainer id="experience">
-      <h2
-        class="flex items-center mb-6 text-xl font-semibold gap-x-3 text-slate-100"
-      >
-        <Briefcase class="size-8" />
-        <span class="whitespace-nowrap">Experience</span>
-      </h2>
-      <Experience />
-    </SectionContainer>
+      <SectionContainer id="experience">
+        <h2
+          class="mb-6 flex items-center gap-x-3 text-xl font-semibold text-[rgb(var(--color-text))]"
+        >
+          <Briefcase class="size-8" />
+          <span class="whitespace-nowrap">Experience</span>
+        </h2>
+        <Experience />
+      </SectionContainer>
 
-    <SectionContainer id="projects">
-      <h2
-        class="flex items-center mb-6 text-xl font-semibold gap-x-3 text-slate-100"
-      >
-        <CodeIcon class="size-7" />
-        <span class="whitespace-nowrap">Projects</span>
-      </h2>
-      <Projects />
-    </SectionContainer>
-  </div>
+      <SectionContainer id="projects">
+        <h2
+          class="mb-6 flex items-center gap-x-3 text-xl font-semibold text-[rgb(var(--color-text))]"
+        >
+          <CodeIcon class="size-7" />
+          <span class="whitespace-nowrap">Projects</span>
+        </h2>
+        <Projects />
+      </SectionContainer>
+    </div>
   </main>
 </Layout>
 
